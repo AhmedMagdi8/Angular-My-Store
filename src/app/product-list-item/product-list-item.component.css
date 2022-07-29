@@ -1,0 +1,23 @@
+.product-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1024px;
+    margin-bottom: 64px;
+  }
+  
+  img {
+      width: 200px;
+      height: 200px;
+  }
+  
+  .product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 250px;
+    margin-bottom: 64px;
+  
+  }

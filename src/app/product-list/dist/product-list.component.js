@@ -20,24 +20,9 @@ var ProductListComponent = /** @class */ (function () {
             _this.products = products;
         });
     };
-    ProductListComponent.prototype.onSubmit = function (product, event) {
-        // get Quantity
-        var index = event.target[0].options.selectedIndex;
-        var newQuantity = Number(event.target[0].options[index].value);
-        // get cart Products
-        var cartProducts = this.httpClientService.getCartProducts();
-        var prodIndexInCart = cartProducts.find(function (p) { return p.id == product.id; });
-        if (cartProducts.length == 0 || !prodIndexInCart) {
-            product.quantity = newQuantity;
-            this.httpClientService.addToCart(product);
-        }
-        else {
-            product.quantity = newQuantity;
-            this.httpClientService.removeFromCart(product);
-            this.httpClientService.addToCart(product);
-        }
-        alert("quantity " + newQuantity + " of " + product.name + "  added to cart with price of " + newQuantity * product.price);
-    };
+    __decorate([
+        core_1.Output()
+    ], ProductListComponent.prototype, "products");
     ProductListComponent = __decorate([
         core_1.Component({
             selector: 'app-product-list',
