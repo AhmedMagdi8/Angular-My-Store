@@ -29,7 +29,6 @@ var HttpClientService = /** @class */ (function () {
         this.cart = this.cart.filter(function (p) {
             return p.id != product.id;
         });
-        console.log(this.cart);
     };
     HttpClientService = __decorate([
         core_1.Injectable({

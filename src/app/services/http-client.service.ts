@@ -35,7 +35,6 @@ export class HttpClientService {
     this.cart = this.cart.filter(p => {
         return p.id != product.id
     });
-    console.log(this.cart)
   } 
 
 }

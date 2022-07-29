@@ -12,7 +12,6 @@ export class CartComponent implements OnInit {
     products: Product[]= [];
     cartProds: any[] = [];
     total: number = 0;
-    @Input() userData: string = '';
 
     name:String='';
     address:String='';
@@ -48,10 +47,10 @@ export class CartComponent implements OnInit {
         this.route.navigateByUrl(`success/${name}/${address}/${this.total}`);
 
     }
-    removeFromCart(product: number) {
+    removeFromCart(product: any) {
         this.httpClientService.removeFromCart(product);
         this.cartProds = this.httpClientService.getCartProducts();
-
+        alert("quantity " +product.quantity +" of "+ product.name+ "  removed from cart");
     }
     calcTotal(): void{
         this.total = this.cartProds.reduce((accumlator: number, val: any) =>{
