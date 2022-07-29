@@ -17,9 +17,11 @@ export class ProductItemDetailComponent implements OnInit {
     product: any;
     products: any[] = [];
     ngOnInit(): void {
-        this.productId = Number(this.route.snapshot.paramMap.get('id'));
-        this.products = this.httpClientService.getProducts();
-        this.product = this.getProductById(this.productId);
+        this.httpClientService.getProducts().subscribe(products => {
+            this.productId = Number(this.route.snapshot.paramMap.get('id'));
+            this.products = products;
+            this.product = this.getProductById(this.productId);
+        });
     }
 
     getProductById(id: number): Product | null {
@@ -30,24 +32,19 @@ export class ProductItemDetailComponent implements OnInit {
 
         // get Quantity
         const index = event.target[0].options.selectedIndex;
-        const quantity = Number(event.target[0].options[index].value);
+        const newQuantity = Number(event.target[0].options[index].value);
         
         // get cart Products
         let cartProducts: any[] = this.httpClientService.getCartProducts();
         
         const prodIndexInCart = cartProducts.find(p => p.id == product.id);
-        console.log(prodIndexInCart);
         
         if(cartProducts.length == 0 || !prodIndexInCart) {
-            product.quantity = quantity;
+            product.quantity = newQuantity;
             this.httpClientService.addToCart(product);
         } else {
-            const oldQuantity = Number(prodIndexInCart.quantity);
-            const newQuantity = oldQuantity + quantity;
             product.quantity = newQuantity;
-            this.httpClientService.removeFromCart(product);
-            console.log(this.httpClientService.getCartProducts());
-            
+            this.httpClientService.removeFromCart(product);        
             this.httpClientService.addToCart(product);
         }
         alert("product added to cart");

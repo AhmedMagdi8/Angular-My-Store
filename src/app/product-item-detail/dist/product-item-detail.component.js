@@ -6,21 +6,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 exports.__esModule = true;
-exports.ProductListComponent = void 0;
+exports.ProductItemDetailComponent = void 0;
 var core_1 = require("@angular/core");
-var ProductListComponent = /** @class */ (function () {
-    function ProductListComponent(httpClientService) {
+var ProductItemDetailComponent = /** @class */ (function () {
+    function ProductItemDetailComponent(router, route, httpClientService) {
+        this.router = router;
+        this.route = route;
         this.httpClientService = httpClientService;
-        this.productMax = 10;
+        this.productId = null;
         this.products = [];
     }
-    ProductListComponent.prototype.ngOnInit = function () {
+    ProductItemDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.httpClientService.getProducts().subscribe(function (products) {
+            _this.productId = Number(_this.route.snapshot.paramMap.get('id'));
             _this.products = products;
+            _this.product = _this.getProductById(_this.productId);
         });
     };
-    ProductListComponent.prototype.onSubmit = function (product, event) {
+    ProductItemDetailComponent.prototype.getProductById = function (id) {
+        var product = this.products.find(function (p) { return p.id === id; });
+        return product;
+    };
+    ProductItemDetailComponent.prototype.onSubmit = function (product, event) {
         // get Quantity
         var index = event.target[0].options.selectedIndex;
         var newQuantity = Number(event.target[0].options[index].value);
@@ -38,13 +46,13 @@ var ProductListComponent = /** @class */ (function () {
         }
         alert("product added to cart");
     };
-    ProductListComponent = __decorate([
+    ProductItemDetailComponent = __decorate([
         core_1.Component({
-            selector: 'app-product-list',
-            templateUrl: './product-list.component.html',
-            styleUrls: ['./product-list.component.css']
+            selector: 'app-product-item-detail',
+            templateUrl: './product-item-detail.component.html',
+            styleUrls: ['./product-item-detail.component.css']
         })
-    ], ProductListComponent);
-    return ProductListComponent;
+    ], ProductItemDetailComponent);
+    return ProductItemDetailComponent;
 }());
-exports.ProductListComponent = ProductListComponent;
+exports.ProductItemDetailComponent = ProductItemDetailComponent;
