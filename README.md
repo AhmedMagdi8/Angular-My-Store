@@ -3,7 +3,21 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
 
-##
+### breif description of the project
+
+the project is eCommerce angular application which is a single page applicaiton
+with 4 pages and 4 routes
+<br />
+''  which is the product list and the main page of our website
+<br />
+'cart' which displays items in my cart
+<br />
+'product-detail/:id' displays the product details
+<br /> 
+'success/:name/:address/:total' display the receipt and successful checkout
+
+
+## How to run
 
 npm install 
 
