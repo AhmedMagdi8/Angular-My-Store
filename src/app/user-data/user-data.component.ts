@@ -13,7 +13,24 @@ export class UserDataComponent implements OnInit {
   
     name: string = '';
     address: string ='';
-  
+    nameError: string='name must be at least 5'
+    addressError:string='address must be at least 8'
+
+    validateName() {
+        if(this.name.length >= 5) {
+            this.nameError = '';
+        } else {
+            this.nameError='name must be at least 5 characters'
+        }
+    }
+
+    validateAddress() {
+        if(this.address.length >= 8) {
+            this.addressError = '';
+        } else {
+            this.addressError='address must be at least 8 characters'
+        }
+    }
     ngOnInit(): void {
     }
   

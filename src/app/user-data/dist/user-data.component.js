@@ -13,7 +13,25 @@ var UserDataComponent = /** @class */ (function () {
         this.checkout = new core_1.EventEmitter();
         this.name = '';
         this.address = '';
+        this.nameError = 'name must be at least 5';
+        this.addressError = 'address must be at least 8';
     }
+    UserDataComponent.prototype.validateName = function () {
+        if (this.name.length >= 5) {
+            this.nameError = '';
+        }
+        else {
+            this.nameError = 'name must be at least 5 characters';
+        }
+    };
+    UserDataComponent.prototype.validateAddress = function () {
+        if (this.address.length >= 8) {
+            this.addressError = '';
+        }
+        else {
+            this.addressError = 'address must be at least 8 characters';
+        }
+    };
     UserDataComponent.prototype.ngOnInit = function () {
     };
     UserDataComponent.prototype.onSubmit = function () {

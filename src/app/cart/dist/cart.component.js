@@ -15,6 +15,7 @@ var CartComponent = /** @class */ (function () {
         this.products = [];
         this.cartProds = [];
         this.total = 0;
+        this.userData = '';
         this.name = '';
         this.address = '';
     }
@@ -53,6 +54,9 @@ var CartComponent = /** @class */ (function () {
         }, 0);
         this.total = Number(this.total.toFixed(2));
     };
+    __decorate([
+        core_1.Input()
+    ], CartComponent.prototype, "userData");
     CartComponent = __decorate([
         core_1.Component({
             selector: 'app-cart',

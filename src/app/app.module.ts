@@ -14,6 +14,7 @@ import { FormsModule }   from '@angular/forms';
 import { SuccessComponent } from './success/success.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     ProductListComponent,
     HeaderComponent,
     SuccessComponent,
-    UserDataComponent
+    UserDataComponent,
+    ProductListItemComponent
   ],
   imports: [
     ReactiveFormsModule,

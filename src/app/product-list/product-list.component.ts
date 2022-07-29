@@ -42,7 +42,7 @@ export class ProductListComponent implements OnInit {
         this.httpClientService.removeFromCart(product);        
         this.httpClientService.addToCart(product);
     }
-    alert("product added to cart");
+    alert("quantity " +newQuantity +" of "+ product.name+ "  added to cart with price of "+newQuantity*product.price);
   }
 
 }

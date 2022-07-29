@@ -44,7 +44,7 @@ var ProductItemDetailComponent = /** @class */ (function () {
             this.httpClientService.removeFromCart(product);
             this.httpClientService.addToCart(product);
         }
-        alert("product added to cart");
+        alert("quantity " + newQuantity + " of " + product.name + "  added to cart with price of " + newQuantity * product.price);
     };
     ProductItemDetailComponent = __decorate([
         core_1.Component({

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientService } from '../services/http-client.service';
 import { Product } from '../models/product-Model';
@@ -12,7 +12,8 @@ export class CartComponent implements OnInit {
     products: Product[]= [];
     cartProds: any[] = [];
     total: number = 0;
-  
+    @Input() userData: string = '';
+
     name:String='';
     address:String='';
     constructor(private httpClientService: HttpClientService, private route: Router) { }

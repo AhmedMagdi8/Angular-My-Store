@@ -1,10 +1,12 @@
 <form  #form="ngForm" (ngSubmit)="onSubmit()">
     <h1> Checkout </h1>
     <label>Full Name: </label><br />
-    <input type='text' name='name' required placeholder="Name" [(ngModel)]="name">
+    <input type='text' name='name' minlength="5" required placeholder="Name(min:5 char)" (ngModelChange)="validateName()" [(ngModel)]="name">
+    <p class="error">{{ nameError }}</p>
     <br />
     <label>Address: </label><br />
-    <input type='text' name='address' required placeholder="Address" [(ngModel)]="address">
+    <input type='text' name='address' minlength="8" required placeholder="Address(min:8 char)" (ngModelChange)="validateAddress()" [(ngModel)]="address">
+    <p class="error"> {{ addressError }}</p>
     <br />
 
     <br>

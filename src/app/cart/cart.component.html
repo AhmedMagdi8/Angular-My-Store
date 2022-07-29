@@ -1,5 +1,7 @@
-<div class="cart-container">
-    <div *ngFor="let product of cartProds" class="cart-item">
+<div class="parent">
+    
+    <div class="cart-container">
+        <div *ngFor="let product of cartProds" class="cart-item">
         <img  src='{{product.url}}'>
         <div>
             <div class="product-item-detail">{{ product.name}}</div>
@@ -19,8 +21,10 @@
             </div>
         </div>
     </div>
-    <div class="cart-item"><b>Total Price: ${{ total }}</b></div>
-
+    <h1 class="cart-item"><b>Total Price: ${{ total }}</b></h1>
+    <br>
     <app-user-data class="form-margin" (checkout)="checkout($event)">
-
+        
     </app-user-data>
+    
+</div>
