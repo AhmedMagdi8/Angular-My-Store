@@ -30,7 +30,6 @@ export class ProductListComponent implements OnInit {
     let cartProducts: any[] = this.httpClientService.getCartProducts();
     
     const prodIndexInCart = cartProducts.find(p => p.id == product.id);
-    console.log(prodIndexInCart);
     
     if(cartProducts.length == 0 || !prodIndexInCart) {
         product.quantity = quantity;
@@ -39,9 +38,7 @@ export class ProductListComponent implements OnInit {
         const oldQuantity = Number(prodIndexInCart.quantity);
         const newQuantity = oldQuantity + quantity;
         product.quantity = newQuantity;
-        // this.httpClientService.removeFromCart(product);
-        console.log(this.httpClientService.getCartProducts());
-        
+        this.httpClientService.removeFromCart(product);        
         this.httpClientService.addToCart(product);
     }
     alert("product added to cart");

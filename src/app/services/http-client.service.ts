@@ -66,6 +66,9 @@ export class HttpClientService {
   addToCart(product: any) {
     this.cart.push(product);
   }
+  clearCart():void {
+    this.cart = [];
+  }
 
   removeFromCart(product: any) {
     

@@ -26,36 +26,30 @@ export class ProductItemDetailComponent implements OnInit {
         const product: Product | null = this.products.find(p => p.id === id);
         return product;
     }
-    onSubmit(product: any, event: any) {
-        console.log('jjj');
-        
+    onSubmit(product:any, event:any) {
 
         // get Quantity
         const index = event.target[0].options.selectedIndex;
-        const quantity = event.target[0].options[index].value;
+        const quantity = Number(event.target[0].options[index].value);
         
         // get cart Products
         let cartProducts: any[] = this.httpClientService.getCartProducts();
         
         const prodIndexInCart = cartProducts.find(p => p.id == product.id);
-        console.log('h');
+        console.log(prodIndexInCart);
         
-        if (cartProducts.length == 0 || prodIndexInCart == -1) {
+        if(cartProducts.length == 0 || !prodIndexInCart) {
             product.quantity = quantity;
             this.httpClientService.addToCart(product);
-            alert("product added to cart");
-            
         } else {
-            const oldQuantity = cartProducts[prodIndexInCart].quantity;
+            const oldQuantity = Number(prodIndexInCart.quantity);
             const newQuantity = oldQuantity + quantity;
             product.quantity = newQuantity;
             this.httpClientService.removeFromCart(product);
+            console.log(this.httpClientService.getCartProducts());
+            
             this.httpClientService.addToCart(product);
-            alert("product added to cart");
         }
-        
-        
-        this.router.navigateByUrl('/')
-
-    }
+        alert("product added to cart");
+      }
 }
