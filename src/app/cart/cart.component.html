@@ -1,0 +1,22 @@
+<div class="cart-item-details">
+    <div *ngFor="let product of cartProds" class="cart-item">
+        <img  src='{{product.url}}'>
+        <div>
+            <div class="product-item-detail">{{ product.name}}</div>
+            <div class="product-item-detail">$ {{ product.price}}</div>
+            <div class="product-item-detail">
+                <select class="select-input">
+                    <option 
+                    *ngFor="let count of [1,2,3,4,5,6,7,8,9,10]" 
+                    [ngValue]="count"
+                    [selected]="product.quantity === count">
+                    {{ count }}
+                </option>
+                </select>
+            </div>
+            <div class="product-item-detail">
+                <button (click)="removeFromCart(product)">Remove</button>
+            </div>
+        </div>
+    </div>
+    <div class="cart-item"><b>Total Price: ${{ total }}</b></div>

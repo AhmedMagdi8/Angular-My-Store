@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: burlywood;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+
+}
+
+a:hover {
+    text-decoration: none;
+    color: purple;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a {
+    margin: 5px;
+    
+}
